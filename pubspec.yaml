@@ -1,7 +1,6 @@
 name: animation_list
 description: A Flutter package project that is a simple animation listview widget.
 version: 0.0.1
-author:
 homepage: https://github.com/turlvo/flutter_animation_list
 
 environment:
