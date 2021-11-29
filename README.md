@@ -1,10 +1,11 @@
 # Animation List
 
-A simple animation listview widget..
+A simple animation listview widget.
 <br><br>
 
 
 # Preview
+![Screen Recording 2021-11-29 at 11 12 09 PM (1)](https://user-images.githubusercontent.com/24351423/143883383-3fb2ca6d-900b-4b61-941d-cc823bfa00cb.gif)
 
 
 
