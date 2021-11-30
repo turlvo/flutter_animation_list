@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AnimationList extends StatefulWidget {
-  final List<Widget> children;
+  final List<Widget>? children;
   final int duration;
   final double reBounceDepth;
 
@@ -20,8 +20,8 @@ class AnimationList extends StatefulWidget {
 
 class _AnimationListState extends State<AnimationList>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> bounceUp, bounceReUp, bounceDown, opacity;
+  late AnimationController controller;
+  late Animation<double> bounceUp, bounceReUp, bounceDown, opacity;
 
   @override
   void initState() {
@@ -57,7 +57,7 @@ class _AnimationListState extends State<AnimationList>
       animation: controller,
       builder: (context, child) {
         return ListView(
-            children: widget.children.asMap().entries.map((item) {
+            children: widget.children!.asMap().entries.map((item) {
           bounceUp =
               Tween<double>(begin: MediaQuery.of(context).size.height, end: 0)
                   .animate(
