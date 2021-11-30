@@ -1,11 +1,15 @@
 # Animation List
 
-A simple animation listview widget.
+A simple animation listview widget.<br>
+When it is built, list item is shown by sliding and bouncing.
 <br><br>
 
 
 # Preview
-![Screen Recording 2021-11-29 at 11 12 09 PM (1)](https://user-images.githubusercontent.com/24351423/143883383-3fb2ca6d-900b-4b61-941d-cc823bfa00cb.gif)
+![Screen Recording 2021-11-29 at 11 12 09 PM (2)](https://user-images.githubusercontent.com/24351423/143973177-3c01bef5-82f2-4e7f-b14a-867292841b64.gif)![Screen Recording 2021-11-30 at 11 11 26 AM](https://user-images.githubusercontent.com/24351423/143973378-bfffa7e9-07be-4625-851e-36b9324f9576.gif)
+
+
+
 
 
 
