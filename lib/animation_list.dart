@@ -1,17 +1,51 @@
 library animation_list;
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AnimationList extends StatefulWidget {
+  // Native List only parameters
+  final Key? key;
+  final ScrollController? controller;
+  final bool? primary;
+  final ScrollPhysics? physics;
+  final bool shrinkWrap;
+  final EdgeInsetsGeometry? padding;
+  final bool addAutomaticKeepAlives;
+  final bool addRepaintBoundaries;
+  final bool addSemanticIndexes;
+  final double? cacheExtent;
   final List<Widget>? children;
+  final int? semanticChildCount;
+  final DragStartBehavior dragStartBehavior;
+  final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
+  final String? restorationId;
+  final Clip clipBehavior;
+
+  // Animation List only parameters
   final int duration;
   final double reBounceDepth;
 
   AnimationList({
+    this.key,
+    this.controller,
+    this.primary,
+    this.physics,
+    this.shrinkWrap = false,
+    this.padding,
+    this.addAutomaticKeepAlives = true,
+    this.addRepaintBoundaries = true,
+    this.addSemanticIndexes = true,
+    this.cacheExtent,
     this.children,
+    this.semanticChildCount,
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual,
     this.duration = 1300,
     this.reBounceDepth = 10,
+    this.restorationId,
+    this.clipBehavior = Clip.hardEdge,
   });
 
   @override
@@ -57,29 +91,44 @@ class _AnimationListState extends State<AnimationList>
       animation: controller,
       builder: (context, child) {
         return ListView(
+            key: widget.key,
+            controller: widget.controller,
+            primary: widget.primary,
+            physics: widget.physics,
+            shrinkWrap: widget.shrinkWrap,
+            padding: widget.padding,
+            addAutomaticKeepAlives: widget.addAutomaticKeepAlives,
+            addRepaintBoundaries: widget.addRepaintBoundaries,
+            addSemanticIndexes: widget.addSemanticIndexes,
+            semanticChildCount: widget.semanticChildCount,
+            dragStartBehavior: widget.dragStartBehavior,
+            keyboardDismissBehavior: widget.keyboardDismissBehavior,
+            restorationId: widget.restorationId,
+            clipBehavior: widget.clipBehavior,
             children: widget.children!.asMap().entries.map((item) {
-          bounceUp =
-              Tween<double>(begin: MediaQuery.of(context).size.height, end: 0)
+              bounceUp = Tween<double>(
+                      begin: MediaQuery.of(context).size.height, end: 0)
                   .animate(
-            CurvedAnimation(
-              parent: controller,
-              curve: Interval(
-                  0.0 + (item.key * 0.1) >= 0.5 ? 0.5 : item.key * 0.1, 0.5,
-                  curve: Curves.easeInOut),
-            ),
-          );
-          return Opacity(
-            opacity: item.key != 0 ? opacity.value : 1,
-            child: Container(
-              margin: item.key == 0
-                  ? null
-                  : EdgeInsets.only(
-                      top:
-                          bounceUp.value + bounceDown.value - bounceReUp.value),
-              child: item.value,
-            ),
-          );
-        }).toList());
+                CurvedAnimation(
+                  parent: controller,
+                  curve: Interval(
+                      0.0 + (item.key * 0.1) >= 0.5 ? 0.5 : item.key * 0.1, 0.5,
+                      curve: Curves.easeInOut),
+                ),
+              );
+              return Opacity(
+                opacity: item.key != 0 ? opacity.value : 1,
+                child: Container(
+                  margin: item.key == 0
+                      ? null
+                      : EdgeInsets.only(
+                          top: bounceUp.value +
+                              bounceDown.value -
+                              bounceReUp.value),
+                  child: item.value,
+                ),
+              );
+            }).toList());
       },
     );
   }
