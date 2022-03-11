@@ -77,19 +77,32 @@ final List<Map<String, dynamic>> data = [
       body: Center(
         child: AnimationList(
             children: data.map((item) {
-          return _buildTile(item['title'], item['backgroundColor']);
-        }).toList()),
+              return _buildTile(item['title'], item['backgroundColor']);
+            }).toList()),
+            duration: 1000,
+            reBounceDepth: 10.0,
       ),
     );
   }
 ```
 <br>
 
-# Params
-```
-AnimationList(
-    children: children,
-    duration: 1000,
-    reBounceDepth: 10,
-)
-```
+# Properties
+| Attribute | Data type | Description | Default |
+|--|--|--|--|
+| key | Key | Controls how one widget replaces another widget in the tree | - |
+| controller | ScrollController | An object that can be used to control the position to which this scroll view is scrolled | - |
+| primary | bool | Whether this is the primary scroll view associated with the parent PrimaryScrollController | - |
+| physics | ScrollPhysics | How the scroll view should respond to user input | - |
+| shrinkWrap | bool | Whether the extent of the scroll view in the scrollDirection should be determined by the contents being viewed | false |
+| padding | EdgeInsetsGeometry | The amount of space by which to inset the children | - |
+| cacheExtent | double | The viewport has an area before and after the visible area to cache items that are about to become visible when the user scrolls | - |
+| children | List<Widget> | The children are required to fill the ListView | <Widget>[] |
+| semanticChildCount | int | The number of children that will contribute semantic information | - |
+| dragStartBehavior | DragStartBehavior | Determines the way that drag start behavior is handled | DragStartBehavior.start |
+| keyboardDismissBehavior | Key | ScrollViewKeyboardDismissBehavior the defines how this ScrollView will dismiss the keyboard automatically | ScrollViewKeyboardDismissBehavior.manual |
+| restorationId | String | Restoration ID to save and restore the scroll offset of the scrollable | - |
+| clipBehavior | Clip | The content will be clipped (or not) according to this option | Clip.hardEdge |
+| duration | int | The milliseconds the animation runs  | 1300 |
+| reBounceDepth | double | A value of bounce depth | 10.0 |
+
