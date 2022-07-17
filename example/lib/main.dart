@@ -79,9 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
         child: AnimationList(
+            duration: 1500,
+            reBounceDepth: 30,
             children: data.map((item) {
-          return _buildTile(item['title'], item['backgroundColor']);
-        }).toList()),
+              return _buildTile(item['title'], item['backgroundColor']);
+            }).toList()),
       ),
     );
   }

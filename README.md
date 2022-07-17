@@ -15,7 +15,7 @@ When it is built, list item is shown by sliding and bouncing.
 
 # Installation
 
-Add `animation_list: ^0.0.2` to your `pubspec.yaml` dependecies. And import it:
+Add `animation_list: ^1.2.0` to your `pubspec.yaml` dependecies. And import it:
 
 ```
 import 'package:animation_list/animation_list.dart';
