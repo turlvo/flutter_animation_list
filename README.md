@@ -6,10 +6,7 @@ When it is built, list item is shown by sliding and bouncing.
 
 
 # Preview
-![Screen Recording 2021-11-29 at 11 12 09 PM (2)](https://user-images.githubusercontent.com/24351423/143973177-3c01bef5-82f2-4e7f-b14a-867292841b64.gif)![Screen Recording 2021-11-30 at 11 11 26 AM](https://user-images.githubusercontent.com/24351423/143973378-bfffa7e9-07be-4625-851e-36b9324f9576.gif)
-
-
-
+<img src="https://user-images.githubusercontent.com/24351423/179394703-39124ab6-619c-404f-9a38-a284a7fd4a92.gif" width="300"> <img src="https://user-images.githubusercontent.com/24351423/179394698-902ec69e-79e5-4777-9499-f4cca2684745.gif" width="300">
 
 
 
