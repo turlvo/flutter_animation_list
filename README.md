@@ -6,12 +6,12 @@ When it is built, list item is shown by sliding and bouncing.
 
 
 # Preview
-<img src="https://user-images.githubusercontent.com/24351423/179385261-343840f9-d807-4aeb-ba16-ca922e37739e.gif" width="300"> <img src="https://user-images.githubusercontent.com/24351423/179385270-707ee63e-96a8-4635-b7d2-163ad03358c8.gif" width="300">
+<img src="https://user-images.githubusercontent.com/24351423/179394703-39124ab6-619c-404f-9a38-a284a7fd4a92.gif" width="300"> <img src="https://user-images.githubusercontent.com/24351423/179394698-902ec69e-79e5-4777-9499-f4cca2684745.gif" width="300">
 
 
 # Installation
 
-Add `animation_list: ^2.1.0` to your `pubspec.yaml` dependecies. And import it:
+Add `animation_list: ^2.2.0` to your `pubspec.yaml` dependecies. And import it:
 
 ```
 import 'package:animation_list/animation_list.dart';
@@ -101,4 +101,7 @@ final List<Map<String, dynamic>> data = [
 | clipBehavior | Clip | The content will be clipped (or not) according to this option | Clip.hardEdge |
 | duration | int | The milliseconds the animation runs  | 1300 |
 | reBounceDepth | double | A value of bounce depth | 10.0 |
+<<<<<<< HEAD
 
+=======
+>>>>>>> v2
