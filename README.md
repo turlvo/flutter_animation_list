@@ -11,7 +11,7 @@ When it is built, list item is shown by sliding and bouncing.
 
 # Installation
 
-Add `animation_list: ^2.2.0` to your `pubspec.yaml` dependecies. And import it:
+Add `animation_list: ^2.2.1` to your `pubspec.yaml` dependecies. And import it:
 
 ```
 import 'package:animation_list/animation_list.dart';
@@ -101,7 +101,4 @@ final List<Map<String, dynamic>> data = [
 | clipBehavior | Clip | The content will be clipped (or not) according to this option | Clip.hardEdge |
 | duration | int | The milliseconds the animation runs  | 1300 |
 | reBounceDepth | double | A value of bounce depth | 10.0 |
-<<<<<<< HEAD
-
-=======
->>>>>>> v2
+| opacityRange | Tween<double> | A Tween<double> value of opacity animation range | Tween<double>(begin: 0.3, end: 1.0) |
