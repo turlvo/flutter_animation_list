@@ -102,6 +102,8 @@ final List<Map<String, dynamic>> data = [
 | clipBehavior | Clip | The content will be clipped (or not) according to this option | Clip.hardEdge |
 | duration | int | The milliseconds the animation runs  | 1300 |
 | reBounceDepth | double | A value of bounce depth | 10.0 |
+| opacityRange | Tween<double> | A Tween<double> value of opacity animation range | Tween<double>(begin: 0.3, end: 1.0) |
+
 <br>
 
 # Params
