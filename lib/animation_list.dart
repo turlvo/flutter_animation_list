@@ -22,6 +22,7 @@ class AnimationList extends StatefulWidget {
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
   final String? restorationId;
   final Clip clipBehavior;
+  final Tween<double>? opacityRange;
 
   // Animation List only parameters
   final int duration;
@@ -46,36 +47,35 @@ class AnimationList extends StatefulWidget {
     this.reBounceDepth = 10,
     this.restorationId,
     this.clipBehavior = Clip.hardEdge,
+    this.opacityRange,
   });
 
   @override
   _AnimationListState createState() => _AnimationListState();
 }
 
-class _AnimationListState extends State<AnimationList>
-    with SingleTickerProviderStateMixin {
+class _AnimationListState extends State<AnimationList> with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<double> bounceUp, bounceReUp, bounceDown, opacity;
+  late Animation<double> bounceUpAnimation, bounceReUpAnimation, bounceDownAnimation, opacityAnimation;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-        duration: Duration(milliseconds: widget.duration), vsync: this);
+    controller = AnimationController(duration: Duration(milliseconds: widget.duration), vsync: this);
 
-    bounceDown = Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
+    bounceDownAnimation = Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
       CurvedAnimation(
         parent: controller,
         curve: Interval(0.5, 0.7, curve: Curves.easeInOut),
       ),
     );
-    bounceReUp = Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
+    bounceReUpAnimation = Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
       CurvedAnimation(
         parent: controller,
         curve: Interval(0.7, 1, curve: Curves.easeInOut),
       ),
     );
-    opacity = Tween<double>(begin: 0.3, end: 1).animate(
+    opacityAnimation = (widget.opacityRange ?? Tween<double>(begin: 0.3, end: 1)).animate(
       CurvedAnimation(
         parent: controller,
         curve: Interval(0.0, 1, curve: Curves.easeInOut),
@@ -107,22 +107,18 @@ class _AnimationListState extends State<AnimationList>
           clipBehavior: widget.clipBehavior,
           itemCount: widget.children!.length,
           itemBuilder: (BuildContext context, int index) {
-            bounceUp =
-                Tween<double>(begin: MediaQuery.of(context).size.height, end: 0)
-                    .animate(
+            bounceUpAnimation = Tween<double>(begin: MediaQuery.of(context).size.height, end: 0).animate(
               CurvedAnimation(
                 parent: controller,
-                curve: Interval(
-                    0.0 + (index * 0.1) >= 0.5 ? 0.5 : index * 0.1, 0.5,
-                    curve: Curves.easeInOut),
+                curve: Interval(0.0 + (index * 0.1) >= 0.5 ? 0.5 : index * 0.1, 0.5, curve: Curves.easeInOut),
               ),
             );
 
             return Opacity(
-              opacity: opacity.value,
+              opacity: opacityAnimation.value,
               child: Container(
                 margin: EdgeInsets.only(
-                  top: bounceUp.value + bounceDown.value - bounceReUp.value,
+                  top: bounceUpAnimation.value + bounceDownAnimation.value - bounceReUpAnimation.value,
                 ),
                 child: widget.children![index],
               ),

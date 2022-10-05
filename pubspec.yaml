@@ -1,11 +1,10 @@
 name: animation_list
 description: A Flutter package project that is a simple animation listview widget.
-version: 2.2.0
+version: 2.2.1
 homepage: https://github.com/turlvo/flutter_animation_list
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
