@@ -81,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: AnimationList(
             duration: 1500,
             reBounceDepth: 30,
+            opacityRange: Tween(begin: 0.7, end: 1.0),
             children: data.map((item) {
               return _buildTile(item['title'], item['backgroundColor']);
             }).toList()),

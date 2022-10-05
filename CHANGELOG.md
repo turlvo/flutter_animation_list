@@ -1,3 +1,6 @@
+## [1.2.1] 
+* Added opacity animation range property
+
 ## [1.2.0] 
 * Changed from 'ListView' widget to 'ListView.builder' for performance
 
