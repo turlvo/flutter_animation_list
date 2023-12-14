@@ -128,4 +128,10 @@ class _AnimationListState extends State<AnimationList> with SingleTickerProvider
       },
     );
   }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 }
