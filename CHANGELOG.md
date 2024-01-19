@@ -1,3 +1,7 @@
+## [3.0.0] 
+* Changed support SDK version
+* Fixed missed `AnimationController` dispose
+
 ## [2.2.1] 
 * Added opacity animation range property
 
