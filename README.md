@@ -5,11 +5,11 @@ When it is built, list item is shown by sliding and bouncing.
 <br><br>
 
 
-# Preview
+# ⚙ Preview
 <img src="https://user-images.githubusercontent.com/24351423/179394703-39124ab6-619c-404f-9a38-a284a7fd4a92.gif" width="300"> <img src="https://user-images.githubusercontent.com/24351423/179394698-902ec69e-79e5-4777-9499-f4cca2684745.gif" width="300">
 
 
-# Installation
+# ⚡ Installation
 
 Add `animation_list: ^2.2.1` to your `pubspec.yaml` dependecies. And import it:
 
@@ -18,7 +18,7 @@ import 'package:animation_list/animation_list.dart';
 ```
 <br>
 
-# How to use
+# ℹ️ How to use
 Simply add a Animation List widget with required params.
 
 ```
@@ -83,7 +83,7 @@ final List<Map<String, dynamic>> data = [
 ```
 <br>
 
-# Properties
+# 🔧 Properties
 | Attribute | Data type | Description | Default |
 |--|--|--|--|
 | key | Key | Controls how one widget replaces another widget in the tree | - |
@@ -102,3 +102,19 @@ final List<Map<String, dynamic>> data = [
 | duration | int | The milliseconds the animation runs  | 1300 |
 | reBounceDepth | double | A value of bounce depth | 10.0 |
 | opacityRange | Tween<double> | A Tween<double> value of opacity animation range | Tween<double>(begin: 0.3, end: 1.0) |
+
+
+## 🤗 Contributing
+
+Contributions are welcome! Feel free to [open an issue](https://github.com/turlvo/flutter_animation_list/issues/new) or submit a [pull request](https://github.com/turlvo/flutter_animation_list/compare) if you have a way to improve this project.
+
+Make sure your request is meaningful and you have tested the app locally before submitting a pull request.
+
+
+## 🙋‍♂️ Support
+
+💙 If you like this project, give it a ⭐ and share it with friends!
+
+<a href="https://www.buymeacoffee.com/turlvo" target="_blank" title="buymeacoffee">
+  <img src="https://iili.io/JoQ1HUQ.md.png"  alt="buymeacoffee-violet-badge" style="width: 130px;">
+</a>
