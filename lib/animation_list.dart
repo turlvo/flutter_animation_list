@@ -4,6 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+enum AnimationDirection { vertical, horizontal, both }
+
 class AnimationList extends StatefulWidget {
   // Native List only parameters
   final Key? key;
@@ -23,6 +25,7 @@ class AnimationList extends StatefulWidget {
   final String? restorationId;
   final Clip clipBehavior;
   final Tween<double>? opacityRange;
+  final AnimationDirection animationDirection;
 
   // Animation List only parameters
   final int duration;
@@ -48,34 +51,42 @@ class AnimationList extends StatefulWidget {
     this.restorationId,
     this.clipBehavior = Clip.hardEdge,
     this.opacityRange,
+    this.animationDirection = AnimationDirection.vertical,
   });
 
   @override
   _AnimationListState createState() => _AnimationListState();
 }
 
-class _AnimationListState extends State<AnimationList> with SingleTickerProviderStateMixin {
+class _AnimationListState extends State<AnimationList>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<double> bounceUpAnimation, bounceReUpAnimation, bounceDownAnimation, opacityAnimation;
+  late Animation<double> bounceReturnAnimation,
+      bounceForwardAnimation,
+      opacityAnimation;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: widget.duration), vsync: this);
+    controller = AnimationController(
+        duration: Duration(milliseconds: widget.duration), vsync: this);
 
-    bounceDownAnimation = Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
+    bounceForwardAnimation =
+        Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
       CurvedAnimation(
         parent: controller,
         curve: Interval(0.5, 0.7, curve: Curves.easeInOut),
       ),
     );
-    bounceReUpAnimation = Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
+    bounceReturnAnimation =
+        Tween<double>(begin: 0.0, end: widget.reBounceDepth).animate(
       CurvedAnimation(
         parent: controller,
         curve: Interval(0.7, 1, curve: Curves.easeInOut),
       ),
     );
-    opacityAnimation = (widget.opacityRange ?? Tween<double>(begin: 0.3, end: 1)).animate(
+    opacityAnimation =
+        (widget.opacityRange ?? Tween<double>(begin: 0.3, end: 1)).animate(
       CurvedAnimation(
         parent: controller,
         curve: Interval(0.0, 1, curve: Curves.easeInOut),
@@ -107,10 +118,17 @@ class _AnimationListState extends State<AnimationList> with SingleTickerProvider
           clipBehavior: widget.clipBehavior,
           itemCount: widget.children!.length,
           itemBuilder: (BuildContext context, int index) {
-            bounceUpAnimation = Tween<double>(begin: MediaQuery.of(context).size.height, end: 0).animate(
+            final Animation<double> animation = Tween<double>(
+              begin: widget.animationDirection == AnimationDirection.vertical
+                  ? MediaQuery.of(context).size.height
+                  : MediaQuery.of(context).size.width,
+              end: 0,
+            ).animate(
               CurvedAnimation(
                 parent: controller,
-                curve: Interval(0.0 + (index * 0.1) >= 0.5 ? 0.5 : index * 0.1, 0.5, curve: Curves.easeInOut),
+                curve: Interval(
+                    0.0 + (index * 0.1) >= 0.5 ? 0.5 : index * 0.1, 0.5,
+                    curve: Curves.easeInOut),
               ),
             );
 
@@ -118,7 +136,20 @@ class _AnimationListState extends State<AnimationList> with SingleTickerProvider
               opacity: opacityAnimation.value,
               child: Container(
                 margin: EdgeInsets.only(
-                  top: bounceUpAnimation.value + bounceDownAnimation.value - bounceReUpAnimation.value,
+                  top: widget.animationDirection ==
+                              AnimationDirection.vertical ||
+                          widget.animationDirection == AnimationDirection.both
+                      ? animation.value +
+                          bounceForwardAnimation.value -
+                          bounceReturnAnimation.value
+                      : 0,
+                  left: widget.animationDirection ==
+                              AnimationDirection.horizontal ||
+                          widget.animationDirection == AnimationDirection.both
+                      ? animation.value +
+                          bounceForwardAnimation.value -
+                          bounceReturnAnimation.value
+                      : 0,
                 ),
                 child: widget.children![index],
               ),

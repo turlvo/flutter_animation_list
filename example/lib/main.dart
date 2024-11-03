@@ -79,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
         child: AnimationList(
+            animationDirection: AnimationDirection.both,
             duration: 1500,
             reBounceDepth: 30,
             children: data.map((item) {

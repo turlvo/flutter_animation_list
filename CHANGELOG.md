@@ -1,3 +1,6 @@
+## [3.1.0]
+* Added animationDirection parameter
+
 ## [3.0.0] 
 * Changed support SDK version
 * Fixed missed `AnimationController` dispose
