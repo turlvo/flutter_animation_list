@@ -6,12 +6,14 @@ When it is built, list item is shown by sliding and bouncing.
 
 
 # ⚙ Preview
-<img src="https://user-images.githubusercontent.com/24351423/179394703-39124ab6-619c-404f-9a38-a284a7fd4a92.gif" width="300"> <img src="https://user-images.githubusercontent.com/24351423/179394698-902ec69e-79e5-4777-9499-f4cca2684745.gif" width="300">
+<img src="https://user-images.githubusercontent.com/24351423/179394703-39124ab6-619c-404f-9a38-a284a7fd4a92.gif" width="300"> <img src="https://user-images.githubusercontent.com/24351423/179394698-902ec69e-79e5-4777-9499-f4cca2684745.gif" width="300"><br>
+<img src="https://github.com/user-attachments/assets/f033ee16-840e-4f4b-a63a-2342cef10432" width="300"> <img src="https://github.com/user-attachments/assets/ff3cc656-9635-4fcb-ab02-4d8d639ddb6a" width="300">
+
 
 
 # ⚡ Installation
 
-Add `animation_list: ^2.2.1` to your `pubspec.yaml` dependecies. And import it:
+Add `animation_list: ^3.1.0` to your `pubspec.yaml` dependecies. And import it:
 
 ```
 import 'package:animation_list/animation_list.dart';
@@ -72,11 +74,12 @@ final List<Map<String, dynamic>> data = [
     return Scaffold(
       body: Center(
         child: AnimationList(
+            animationDirection: AnimationDirection.horizontal,
+            duration: 1000,
+            reBounceDepth: 10.0,
             children: data.map((item) {
               return _buildTile(item['title'], item['backgroundColor']);
             }).toList()),
-            duration: 1000,
-            reBounceDepth: 10.0,
       ),
     );
   }
@@ -102,6 +105,7 @@ final List<Map<String, dynamic>> data = [
 | duration | int | The milliseconds the animation runs  | 1300 |
 | reBounceDepth | double | A value of bounce depth | 10.0 |
 | opacityRange | Tween<double> | A Tween<double> value of opacity animation range | Tween<double>(begin: 0.3, end: 1.0) |
+| animationDirection | AnimationDirection | A animation direction(vertical / horizontal / both) | AnimationDirection.vertical |
 
 
 ## 🤗 Contributing
